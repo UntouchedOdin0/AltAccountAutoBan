@@ -19,7 +19,7 @@ The Plugin has no Commands and no Permissions.
 
  
 
-It Connects to my Private MySQL Server in wich are currently over 80 Alt-Accounts registred, and i am constantly adding more.
+It Connects to my Private MySQL Server in wich are currently over 90 Alt-Accounts registred, and i am constantly adding more.
 
  
 
