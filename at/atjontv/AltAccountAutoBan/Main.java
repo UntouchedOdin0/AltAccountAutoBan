@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin{
 	
-	private static MySQL MySQL = new MySQL("213.202.229.156", "3306", "altautoban_users", "altautoban", "S6QR6ammNc9UZJTa");
+	private static MySQL MySQL = new MySQL(/*<HERE WOULD BE THE SERVER, PORT, DATABASE, USER, PASSWORD OF MY SERVER!>*/);
 	public static Connection MySQLConnection = null;
 	
 	@Override

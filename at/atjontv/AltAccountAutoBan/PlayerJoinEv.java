@@ -43,5 +43,26 @@ public class PlayerJoinEv implements Listener{
 			else
 				e.printStackTrace();
 		}
+		
+		try {
+			statement = Main.MySQLConnection.createStatement();
+			res = statement.executeQuery("SELECT * FROM DataBase_B WHERE Name = '" + name + "';");
+			res.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			if(res != null){
+				if(res.getString("Name") != null)
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:ban "+name+" Alt-Account [Banned throug AltAccountAutoBan by AtjonTV]");
+			}
+		} catch (SQLException e) {
+			if(e.getMessage().startsWith("Illegal operation on empty result set.")){
+				
+			}
+			else
+				e.printStackTrace();
+		}
 	}
 }
