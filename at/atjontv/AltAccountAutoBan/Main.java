@@ -3,7 +3,7 @@ package at.atjontv.AltAccountAutoBan;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.huskehhh.mysql.mysql.*;
+import at.atjontv.AltAccountAutoBan.MySQL.MySQL;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

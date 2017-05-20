@@ -1,4 +1,4 @@
-package com.huskehhh.mysql;
+package at.atjontv.AltAccountAutoBan.MySQL;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

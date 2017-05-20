@@ -1,8 +1,6 @@
 package at.atjontv.AltAccountAutoBan;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import at.atjontv.AltAccountAutoBan.DataBaseCheck;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,48 +19,8 @@ public class PlayerJoinEv implements Listener{
 		Player p = PJE.getPlayer();
 		String name = p.getName();
 		
-		Statement statement;
-		ResultSet res = null;
-		try {
-			statement = Main.MySQLConnection.createStatement();
-			res = statement.executeQuery("SELECT * FROM DataBase_A WHERE Name = '" + name + "';");
-			res.next();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			if(res != null){
-				if(res.getString("Name") != null)
-					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:ban "+name+" Alt-Account [Banned throug AltAccountAutoBan by AtjonTV]");
-			}
-		} catch (SQLException e) {
-			if(e.getMessage().startsWith("Illegal operation on empty result set.")){
-				
-			}
-			else
-				e.printStackTrace();
-		}
-		
-		try {
-			statement = Main.MySQLConnection.createStatement();
-			res = statement.executeQuery("SELECT * FROM DataBase_B WHERE Name = '" + name + "';");
-			res.next();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			if(res != null){
-				if(res.getString("Name") != null)
-					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:ban "+name+" Alt-Account [Banned throug AltAccountAutoBan by AtjonTV]");
-			}
-		} catch (SQLException e) {
-			if(e.getMessage().startsWith("Illegal operation on empty result set.")){
-				
-			}
-			else
-				e.printStackTrace();
+		if(DataBaseCheck.userInDataBase_A(name) || DataBaseCheck.userInDataBase_B(name)){
+			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:ban "+name+" Using an Alt-Account [Banned throug AltAccountAutoBan by AtjonTV]");
 		}
 	}
 }

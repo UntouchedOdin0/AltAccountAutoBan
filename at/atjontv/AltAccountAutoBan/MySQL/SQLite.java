@@ -1,6 +1,4 @@
-package com.huskehhh.mysql.sqlite;
-
-import com.huskehhh.mysql.Database;
+package at.atjontv.AltAccountAutoBan.MySQL;
 
 import java.io.File;
 import java.io.IOException;
