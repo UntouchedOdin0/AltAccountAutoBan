@@ -14,13 +14,23 @@ public class PlayerJoinEv implements Listener{
 		Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
 	}
 	
+	private String Prefix = (char)167+"7["+(char)167+"4AAAB"+(char)167+"7]"+(char)167+"f » ";
+	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent PJE){
 		Player p = PJE.getPlayer();
 		String name = p.getName();
 		
-		if(DataBaseCheck.userInDataBase_A(name) || DataBaseCheck.userInDataBase_B(name)){
-			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:ban "+name+" Using an Alt-Account [Banned throug AltAccountAutoBan by AtjonTV]");
+		if(DataBaseCheck.userInDataBase_A(name) || DataBaseCheck.userInDataBase_B(name) || DataBaseCheck.userInDataBase_C(name)){
+			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:ban "+name+" Alt-Account [Banned throug AltAccountAutoBan by AtjonTV]");
+		
+			
+			for(Player x : Bukkit.getOnlinePlayers()){
+				if(x.hasPermission("AAAB.admin")){
+					x.sendMessage(Prefix+(char)167+"4"+name+(char)167+"f was an Alt-Account, and got Banned!");
+				}
+			}
+		
 		}
 	}
 }
